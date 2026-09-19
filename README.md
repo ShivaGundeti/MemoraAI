@@ -1,12 +1,28 @@
-# MemoraAI
+# 🧠 MemoraAI
 
-Welcome to the MemoraAI project! 
+> **🚧 Status: Under Construction 🚧**  
+> *Currently building the core backend infrastructure.*
 
-## Description
-MemoraAI is an intelligent application backed by a Python backend.
+MemoraAI is a personal AI-powered memory and knowledge management platform. It allows users to store different forms of personal knowledge (text, PDFs, images) and retrieve them intelligently using semantic AI search.
 
-## Setup Instructions
-1. Navigate to the `Backend` directory.
-2. Set up your Python virtual environment.
-3. Add your `.env` variables.
-4. Run the backend server.
+## 🛠️ Technology Stack
+
+**Backend:**
+*   🐍 **Python** - Core language
+*   ⚡ **FastAPI** - High-performance async web framework
+*   🍃 **MongoDB (Motor)** - Primary NoSQL Database for document storage
+*   🤖 **ChromaDB** - Vector database for AI embeddings *(Coming soon)*
+
+**Frontend:**
+*   ⚛️ **Next.js & React** - UI Framework *(Coming soon)*
+*   🎨 **Tailwind CSS** - Styling *(Coming soon)*
+
+## 🚀 Features Implemented (Phase 3)
+- [x] MongoDB Atlas Connection
+- [x] Pydantic Data Validation
+- [x] CRUD API endpoints for Text Notes
+- [x] HTTP Exception & Error Handling
+
+## 🔜 Next Up (Phase 4)
+- [ ] File Upload handling via `multipart/form-data`
+- [ ] PDF Text Extraction
