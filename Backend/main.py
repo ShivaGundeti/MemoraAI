@@ -1,4 +1,4 @@
-import fitz
+import pymupdf
 from fastapi import HTTPException , FastAPI, UploadFile, File
 import database
 from models import NoteCreate
@@ -66,7 +66,7 @@ async def delete_note(id:str):
 @app.post("/api/upload/")
 async def upload_document(file:UploadFile = File()):
     file_bytes = await file.read()
-    pdf_document = fitz.open(stream=file_bytes,filetype="pdf")
+    pdf_document = pymupdf.open(stream=file_bytes,filetype="pdf")
     # print(pdf_document)
     extracted_text = ""
     for page in pdf_document:
