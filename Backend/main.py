@@ -1,5 +1,5 @@
-from fastapi import HTTPException
-from fastapi import FastAPI
+import fitz
+from fastapi import HTTPException , FastAPI, UploadFile, File
 import database
 from models import NoteCreate
 from bson import ObjectId
@@ -61,3 +61,16 @@ async def delete_note(id:str):
         return {"Message":"Deleted Successfully"}
     except InvalidId:
         raise HTTPException(status_code=400,detail="Invalid ID")
+
+
+@app.post("/api/upload/")
+async def upload_document(file:UploadFile = File()):
+    file_bytes = await file.read()
+    pdf_document = fitz.open(stream=file_bytes,filetype="pdf")
+    # print(pdf_document)
+    extracted_text = ""
+    for page in pdf_document:
+        extracted_text += page.get_text()
+    note_dict = {"title": file.filename,"content":extracted_text,"userid":"user_123"}
+    await database.db.notes.insert_one(note_dict)
+    return {"success":"Uploaded File Successfully"}
